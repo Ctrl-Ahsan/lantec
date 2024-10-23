@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
-const HeroSection = styled.section`
+const HeroContainer = styled.section`
     display: flex;
     justify-content: center;
     width: 100vw;
@@ -139,9 +139,10 @@ const HeroSection = styled.section`
     }
 
     button {
-        padding: 10px 20px;
+        padding: 15px 0px;
+        border-radius: 5px;
         font-size: 1rem;
-        width: 107.5%;
+        width: calc(100% + 23.33px);
         background-color: orange;
         color: white;
         border: none;
@@ -158,7 +159,7 @@ const Hero = () => {
     }
 
     return (
-        <HeroSection>
+        <HeroContainer>
             <div className="text-section">
                 <div className="subtitle">
                     Builds in Muskoka & Surrounding Areas
@@ -209,7 +210,7 @@ const Hero = () => {
                     )}
                 </div>
             </div>
-        </HeroSection>
+        </HeroContainer>
     )
 }
 
