@@ -53,7 +53,7 @@ const HeroContainer = styled.section`
         .subtitle {
             font-size: 1.2em;
             font-weight: bold;
-            color: #fa833e;
+            color: #fb9313;
             margin-bottom: 15px;
         }
 
@@ -66,7 +66,7 @@ const HeroContainer = styled.section`
         }
 
         .highlight {
-            color: #fa833e;
+            color: #fb9313;
         }
 
         .description {
@@ -142,7 +142,7 @@ const HeroContainer = styled.section`
         border-radius: 5px;
         font-size: 1rem;
         width: calc(100% + 23.33px);
-        background-color: orange;
+        background-color: #fb9313;
         color: white;
         border: none;
         cursor: pointer;
@@ -158,7 +158,7 @@ const Hero = () => {
     }
 
     return (
-        <HeroContainer>
+        <HeroContainer id="hero">
             <div className="text-section">
                 <div className="subtitle">
                     Builds in Muskoka & Surrounding Areas

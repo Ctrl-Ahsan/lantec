@@ -54,7 +54,7 @@ const AboutContainer = styled.section`
         }
         .icon {
             font-size: 4em;
-            color: orange;
+            color: #fb9313;
             margin-bottom: 10px;
         }
         .item-title {
@@ -71,7 +71,7 @@ const AboutContainer = styled.section`
 
 const About = () => {
     return (
-        <AboutContainer>
+        <AboutContainer id="about">
             <div className="content">
                 <div className="title">
                     PREMIER CONSTRUCTION AND DESIGN SERVICES IN MUSKOKA

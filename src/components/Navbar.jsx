@@ -9,6 +9,10 @@ const Navbar = () => {
         setIsOpen(!isOpen)
     }
 
+    const closeMenu = () => {
+        setIsOpen(false)
+    }
+
     const NavbarContainer = styled.header`
         display: flex;
         align-items: center;
@@ -38,9 +42,17 @@ const Navbar = () => {
                 cursor: pointer;
             }
         }
-        & .estimate {
-            padding: 10px 30px;
-            background-color: #ff8400;
+
+        a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            margin: 15px 0px;
+
+            &:hover {
+                color: #fb9313;
+            }
         }
 
         & .hamburger,
@@ -74,38 +86,45 @@ const Navbar = () => {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-
-                & .item {
-                    display: block;
-                    margin: 15px 0;
-                    color: white;
-                    cursor: pointer;
-                }
             }
         }
     `
 
     return (
-        <NavbarContainer isOpen={isOpen}>
+        <NavbarContainer id="home" isOpen={isOpen}>
             <div className="logo">
                 <img src="../public/logo.png" alt="Logo" />
             </div>
             <nav className="nav">
-                <div className="item">HOME</div>
-                <div className="item">SERVICES</div>
-                <div className="item">GALLERY</div>
-                <div className="item">ABOUT</div>
-                <div className="item estimate">FREE ESTIMATE</div>
+                <a href="#about" className="item">
+                    ABOUT
+                </a>
+                <a href="#services" className="item">
+                    SERVICES
+                </a>
+                <a href="#gallery" className="item">
+                    GALLERY
+                </a>
+                <a href="#contact" className="item">
+                    CONTACT
+                </a>
             </nav>
             <div className="hamburger" onClick={toggleMenu}>
                 {isOpen ? <FaTimes /> : <FaBars />}
             </div>
             <div className="menu">
-                <div className="item">HOME</div>
-                <div className="item">SERVICES</div>
-                <div className="item">GALLERY</div>
-                <div className="item">ABOUT</div>
-                <div className="item estimate">FREE ESTIMATE</div>
+                <a href="#about" className="item" onClick={closeMenu}>
+                    ABOUT
+                </a>
+                <a href="#services" className="item" onClick={closeMenu}>
+                    SERVICES
+                </a>
+                <a href="#gallery" className="item" onClick={closeMenu}>
+                    GALLERY
+                </a>
+                <a href="#contact" className="item" onClick={closeMenu}>
+                    CONTACT
+                </a>
             </div>
         </NavbarContainer>
     )

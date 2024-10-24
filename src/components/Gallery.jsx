@@ -161,7 +161,7 @@ const Gallery = () => {
     }, [currentImageIndex])
 
     return (
-        <GalleryContainer>
+        <GalleryContainer id="gallery">
             <div className="title">Gallery</div>
 
             <div className="selected-image">
