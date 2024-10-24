@@ -116,7 +116,7 @@ const GalleryContainer = styled.section`
 
 const Gallery = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
-
+    const [hasInteracted, setHasInteracted] = useState(false)
     const thumbnailContainerRef = useRef(null)
 
     const galleryImages = [
@@ -147,11 +147,12 @@ const Gallery = () => {
     }
 
     const handleThumbnailClick = (index) => {
+        setHasInteracted(true)
         setCurrentImageIndex(index)
     }
 
     useEffect(() => {
-        if (thumbnailContainerRef.current) {
+        if (hasInteracted && thumbnailContainerRef.current) {
             const selectedThumbnail =
                 thumbnailContainerRef.current.children[currentImageIndex]
             selectedThumbnail.scrollIntoView({
@@ -160,7 +161,7 @@ const Gallery = () => {
                 inline: "center",
             })
         }
-    }, [currentImageIndex])
+    }, [currentImageIndex, hasInteracted])
 
     return (
         <GalleryContainer id="gallery">
