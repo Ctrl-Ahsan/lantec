@@ -13,7 +13,8 @@ const FooterContainer = styled.footer`
         background-color: #fb9313;
         width: 100%;
         height: 500px;
-        @media (min-width: 768px) {
+        @media (max-width: 500px) {
+            padding: 30px 0px;
         }
     }
     .quote-section {
