@@ -13,9 +13,8 @@ const HeroContainer = styled.section`
         ),
         url("../public/hero.jpeg");
     background-size: cover;
-    background-position: left;
+    background-position: top;
     background-repeat: no-repeat;
-    margin-top: 80px;
     padding: 80px 0px;
 
     @media (max-width: 1150px) {
@@ -67,7 +66,7 @@ const HeroContainer = styled.section`
         }
 
         .highlight {
-            color: #ff7530;
+            color: #fa833e;
         }
 
         .description {

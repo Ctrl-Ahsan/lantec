@@ -11,20 +11,21 @@ const Navbar = () => {
 
     const NavbarContainer = styled.header`
         display: flex;
+        align-items: center;
         justify-content: space-between;
         width: 100vw;
         height: 80px;
         background-color: black;
         font-size: 0.8em;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
 
         & .logo {
             display: flex;
-            padding-left: 15px;
+            padding-left: 25px;
             cursor: pointer;
+
+            & img {
+                height: 40px;
+            }
         }
 
         & .nav {
