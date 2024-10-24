@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import emailjs from "emailjs-com"
 import styled from "styled-components"
 
 const HeroContainer = styled.section`
@@ -151,6 +152,55 @@ const HeroContainer = styled.section`
 
 const Hero = () => {
     const [step, setStep] = useState(1)
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        city: "",
+        description: "",
+    })
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
+    // Submit form data to EmailJS
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        // If phone number is not provided, set default value
+        const finalData = {
+            ...formData,
+            phone: formData.phone ? formData.phone : "No phone number provided",
+        }
+
+        emailjs
+            .send(
+                "service_o2hkgsn",
+                "template_8eaxbsq",
+                finalData,
+                "Ec62-6gaZWpu-S_FN"
+            )
+            .then(
+                (response) => {
+                    console.log("SUCCESS!", response.status, response.text)
+                    alert("Your estimate request has been sent!")
+                },
+                (err) => {
+                    console.error("FAILED...", err)
+                }
+            )
+
+        // Reset form fields after submission
+        setStep(1)
+        setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            city: "",
+            description: "",
+        })
+    }
 
     const handleNext = (e) => {
         e.preventDefault()
@@ -186,22 +236,48 @@ const Hero = () => {
                     </div>
                     {step === 1 && (
                         <form onSubmit={handleNext}>
-                            <input placeholder="Name" type="text" required />
-                            <input placeholder="Email" type="email" required />
                             <input
+                                name="name"
+                                placeholder="Name"
+                                type="text"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input
+                                name="email"
+                                placeholder="Email"
+                                type="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input
+                                name="phone"
                                 placeholder="Phone Number (Optional)"
                                 type="tel"
+                                value={formData.phone}
+                                onChange={handleChange}
                             />
                             <button type="submit">Next</button>
                         </form>
                     )}
                     {step === 2 && (
-                        <form onSubmit={handleNext}>
-                            <input placeholder="City" type="text" required />
+                        <form onSubmit={handleSubmit}>
+                            <input
+                                name="city"
+                                placeholder="City"
+                                type="text"
+                                value={formData.city}
+                                onChange={handleChange}
+                                required
+                            />
                             <textarea
+                                name="description"
                                 placeholder="Project Description"
-                                rows={"8"}
-                                resize:none
+                                rows="8"
+                                value={formData.description}
+                                onChange={handleChange}
                                 required
                             />
                             <button type="submit">Submit</button>
