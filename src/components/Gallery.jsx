@@ -11,7 +11,7 @@ const GalleryContainer = styled.section`
 
     .title {
         font-family: "Bebas Neue", sans-serif;
-        font-size: 3em;
+        font-size: 4em;
         margin-bottom: 40px;
         color: #333;
     }
@@ -72,6 +72,7 @@ const GalleryContainer = styled.section`
             overflow-x: auto;
             overflow-y: hidden;
             padding: 0 10px;
+            max-width: 400px;
 
             .thumbnail {
                 width: 100px;
@@ -116,8 +117,7 @@ const GalleryContainer = styled.section`
 const Gallery = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-    // Array of refs for thumbnails
-    const thumbnailRefs = useRef([])
+    const thumbnailContainerRef = useRef(null)
 
     const galleryImages = [
         "../public/gallery.jpeg",
@@ -150,11 +150,13 @@ const Gallery = () => {
         setCurrentImageIndex(index)
     }
 
-    // Scroll the selected thumbnail into view when the image changes
     useEffect(() => {
-        if (thumbnailRefs.current[currentImageIndex]) {
-            thumbnailRefs.current[currentImageIndex].scrollIntoView({
+        if (thumbnailContainerRef.current) {
+            const selectedThumbnail =
+                thumbnailContainerRef.current.children[currentImageIndex]
+            selectedThumbnail.scrollIntoView({
                 behavior: "smooth",
+                block: "nearest",
                 inline: "center",
             })
         }
@@ -180,7 +182,10 @@ const Gallery = () => {
                     <FaArrowLeft />
                 </div>
 
-                <div className="thumbnail-container">
+                <div
+                    className="thumbnail-container"
+                    ref={thumbnailContainerRef}
+                >
                     {galleryImages.map((image, index) => (
                         <div
                             className={`thumbnail ${
@@ -188,7 +193,6 @@ const Gallery = () => {
                             }`}
                             key={index}
                             onClick={() => handleThumbnailClick(index)}
-                            ref={(el) => (thumbnailRefs.current[index] = el)}
                         >
                             <img src={image} alt={`Thumbnail ${index + 1}`} />
                         </div>
