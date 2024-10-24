@@ -120,18 +120,18 @@ const Gallery = () => {
     const thumbnailContainerRef = useRef(null)
 
     const galleryImages = [
-        "../public/gallery.jpeg",
-        "../public/gallery2.jpeg",
-        "../public/gallery3.jpeg",
-        "../public/gallery4.jpeg",
-        "../public/gallery5.jpeg",
-        "../public/gallery6.jpeg",
-        "../public/gallery7.jpeg",
-        "../public/gallery8.jpeg",
-        "../public/gallery9.jpeg",
-        "../public/gallery10.jpeg",
-        "../public/gallery11.jpeg",
-        "../public/gallery12.jpeg",
+        "/gallery.jpeg",
+        "/gallery2.jpeg",
+        "/gallery3.jpeg",
+        "/gallery4.jpeg",
+        "/gallery5.jpeg",
+        "/gallery6.jpeg",
+        "/gallery7.jpeg",
+        "/gallery8.jpeg",
+        "/gallery9.jpeg",
+        "/gallery10.jpeg",
+        "/gallery11.jpeg",
+        "/gallery12.jpeg",
     ]
 
     const handleNext = () => {

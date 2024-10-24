@@ -12,7 +12,7 @@ const HeroContainer = styled.section`
             rgba(0, 0, 0, 0),
             rgba(0, 0, 0, 1)
         ),
-        url("../public/hero.jpeg");
+        url("/hero.jpeg");
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -27,7 +27,7 @@ const HeroContainer = styled.section`
                 rgba(0, 0, 0, 0),
                 rgba(0, 0, 0, 1)
             ),
-            url("../public/hero.jpeg");
+            url("/hero.jpeg");
     }
 
     .text-section {

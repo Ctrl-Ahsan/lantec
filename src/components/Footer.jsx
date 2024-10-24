@@ -173,7 +173,7 @@ const Footer = () => {
             </div>
             <div className="footer-links">
                 <div className="logo">
-                    <img src="../public/logo.png" alt="Company Logo" />
+                    <img src="/logo.png" alt="Company Logo" />
                 </div>
                 <div className="quick-links">
                     <h4>Quick Links</h4>

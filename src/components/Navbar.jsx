@@ -93,7 +93,7 @@ const Navbar = () => {
     return (
         <NavbarContainer id="home" isOpen={isOpen}>
             <div className="logo">
-                <img src="../public/logo.png" alt="Logo" />
+                <img src="/logo.png" alt="Logo" />
             </div>
             <nav className="nav">
                 <a href="#about" className="item">
