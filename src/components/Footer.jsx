@@ -155,7 +155,7 @@ const Footer = () => {
     }
 
     return (
-        <FooterContainer id="contact">
+        <FooterContainer>
             <div className="colored-container">
                 <div className="quote-section">
                     <div className="text-content">
@@ -172,7 +172,7 @@ const Footer = () => {
                     <button onClick={scrollToHero}>Get A Free Estimate</button>
                 </div>
             </div>
-            <div className="footer-links">
+            <div className="footer-links" id="contact">
                 <div className="logo">
                     <img src="/logo.png" alt="Company Logo" />
                 </div>
