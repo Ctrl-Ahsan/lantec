@@ -13,7 +13,7 @@ const AboutContainer = styled.section`
     padding: 70px 30px;
 
     @media (max-width: 500px) {
-        font-size: 0.75rem;
+        font-size: 0.9rem;
     }
 
     .content {
