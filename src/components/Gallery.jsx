@@ -18,39 +18,40 @@ const GalleryContainer = styled.section`
 
     .selected-image {
         width: 80%;
-        max-width: 800px;
-        height: auto;
+        max-width: 720px;
+        height: 480px;
+        background-color: black;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-bottom: 30px;
         border-radius: 8px;
         overflow: hidden;
-        transition: all 0.3s ease;
 
         img {
-            width: 100%;
-            max-height: 480px;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 8px;
+            outline: none;
+            border: none;
+            user-select: none;
+            -webkit-user-select: none;
         }
-    }
-
-    .controls {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 90%;
-        max-width: 800px;
-        margin-top: 20px;
 
         .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             padding: 10px;
             border-radius: 50%;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            outline: none;
+            border: none;
+            user-select: none;
 
             &:hover {
                 background-color: rgba(0, 0, 0, 0.8);
@@ -66,13 +67,29 @@ const GalleryContainer = styled.section`
             }
         }
 
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+    }
+
+    .controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        max-width: 720px;
+
         .thumbnail-container {
             display: flex;
             gap: 10px;
             overflow-x: auto;
             overflow-y: hidden;
             padding: 0 10px;
-            max-width: 400px;
+            max-width: 800px;
 
             .thumbnail {
                 width: 100px;
@@ -87,6 +104,7 @@ const GalleryContainer = styled.section`
                     height: 100%;
                     object-fit: contain;
                     border-radius: 5px;
+                    user-select: none;
                 }
 
                 &.active {
@@ -137,18 +155,20 @@ const Gallery = () => {
     const handleNext = () => {
         if (currentImageIndex < galleryImages.length - 1) {
             setCurrentImageIndex(currentImageIndex + 1)
+            setHasInteracted(true)
         }
     }
 
     const handlePrevious = () => {
         if (currentImageIndex > 0) {
             setCurrentImageIndex(currentImageIndex - 1)
+            setHasInteracted(true)
         }
     }
 
     const handleThumbnailClick = (index) => {
-        setHasInteracted(true)
         setCurrentImageIndex(index)
+        setHasInteracted(true)
     }
 
     useEffect(() => {
@@ -168,12 +188,8 @@ const Gallery = () => {
             <div className="title">Gallery</div>
 
             <div className="selected-image">
-                <img src={galleryImages[currentImageIndex]} alt="Selected" />
-            </div>
-
-            <div className="controls">
                 <div
-                    className="arrow"
+                    className={`arrow arrow-left`}
                     onClick={handlePrevious}
                     style={{
                         visibility:
@@ -182,7 +198,22 @@ const Gallery = () => {
                 >
                     <FaArrowLeft />
                 </div>
+                <img src={galleryImages[currentImageIndex]} alt="Selected" />
+                <div
+                    className={`arrow arrow-right`}
+                    onClick={handleNext}
+                    style={{
+                        visibility:
+                            currentImageIndex === galleryImages.length - 1
+                                ? "hidden"
+                                : "visible",
+                    }}
+                >
+                    <FaArrowRight />
+                </div>
+            </div>
 
+            <div className="controls">
                 <div
                     className="thumbnail-container"
                     ref={thumbnailContainerRef}
@@ -198,19 +229,6 @@ const Gallery = () => {
                             <img src={image} alt={`Thumbnail ${index + 1}`} />
                         </div>
                     ))}
-                </div>
-
-                <div
-                    className="arrow"
-                    onClick={handleNext}
-                    style={{
-                        visibility:
-                            currentImageIndex === galleryImages.length - 1
-                                ? "hidden"
-                                : "visible",
-                    }}
-                >
-                    <FaArrowRight />
                 </div>
             </div>
         </GalleryContainer>
