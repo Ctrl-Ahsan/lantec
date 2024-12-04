@@ -175,10 +175,10 @@ const Hero = () => {
 
         emailjs
             .send(
-                "service_o2hkgsn",
-                "template_8eaxbsq",
+                "service_3sdof4n",
+                "template_r0p8tfe",
                 finalData,
-                "Ec62-6gaZWpu-S_FN"
+                "rzItiWlgoVA-0yRCo"
             )
             .then(
                 (response) => {
