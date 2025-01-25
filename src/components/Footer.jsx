@@ -194,7 +194,7 @@ const Footer = () => {
             </div>
 
             <div className="footer-bottom">
-                © 2024 Lantec Builds. All Rights Reserved.
+                © 2025 Lantec Builds. All Rights Reserved.
             </div>
         </FooterContainer>
     )
